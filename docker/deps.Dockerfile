@@ -34,19 +34,18 @@ RUN apt install -y \
 # Setup basic environment
 ENV USER="root"
 ENV HOME="/root"
-ENV SPACK_DIR="${HOME}/spack"
-ENV SPACK_VERSION="v0.20.2"
+ENV SPACK_VERSION="v0.21.1"
 COPY ci/module_load.sh module_load.sh
 
 # Install Spack
 RUN . /module_load.sh && \
-    git clone -b ${SPACK_VERSION} https://github.com/spack/spack ${SPACK_DIR} && \
-    . "${SPACK_DIR}/share/spack/setup-env.sh" && \
+    git clone -b ${SPACK_VERSION} https://github.com/spack/spack && \
+    . "/spack/share/spack/setup-env.sh" && \
     spack external find
 
 # Git clone mega_mmap \
 RUN git clone https://github.com/lukemartinlogan/mega_mmap && \
     cd mega_mmap && \
     . /module_load.sh && \
-    . "${SPACK_DIR}/share/spack/setup-env.sh" && \
+    . "/spack/share/spack/setup-env.sh" && \
     . deps.sh

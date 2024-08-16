@@ -21,7 +21,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 docker build -t lukemartinlogan/mega_mmap . -f docker/deps.Dockerfile
-docker run -it --mount src=${PWD},target=/mega_mmap,type=bind \
+docker run -it \
 --name mega_mmap_c \
 --network host \
 --memory=8G \
@@ -34,6 +34,13 @@ lukemartinlogan/mega_mmap
 NOTE: Hermes uses shared memory. Shared memory goes against docker's security
 philosophy. To get around this, we add shm-size. You may need to change
 this parameter depending on your system.
+
+To remove the container:
+```
+docker stop mega_mmap_c
+docker rm mega_mmap_c
+docker rmi lukemartinlogan/mega_mmap
+```
 
 # Dependencies
 

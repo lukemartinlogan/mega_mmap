@@ -7,6 +7,9 @@ python3 -m pip install -r requirements.txt
 python3 -m pip install -e .
 popd
 scspkg init False
+SCSPKG_MODULE_DIR=$(scspkg module dir)
+module use ${SCSPKG_MODULE_DIR}
+echo "module use ${SCSPKG_MODULE_DIR}" >> ~/.bashrc
 
 # Install jarvis CD
 git clone https://github.com/grc-iit/jarvis-cd
@@ -66,7 +69,7 @@ git clone https://github.com/lukemartinlogan/scs-repo.git
 spack repo add scs-repo
 
 # Install hermes
-spack install hermes@master
+spack install hermes+vfd@master
 spack load hermes@master
 
 # Install mega_mmap
