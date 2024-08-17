@@ -70,7 +70,7 @@ spack repo add scs-repo
 
 # Install hermes
 spack install hermes+vfd@master
-spack load hermes@master
+spack load hermes
 
 # Install mega_mmap
 scspkg create mega_mmap
