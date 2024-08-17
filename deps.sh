@@ -46,7 +46,7 @@ popd
 #popd
 
 # Install arrow
-spack install arrow +parquet^thrift -python
+spack install arrow@15 +parquet^thrift -python
 spack load arrow
 
 # Install spark

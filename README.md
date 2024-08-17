@@ -40,6 +40,7 @@ To remove the container:
 docker stop mega_mmap_c
 docker rm mega_mmap_c
 docker rmi lukemartinlogan/mega_mmap
+docker buildx prune # Optional, removes all interim images
 ```
 
 # Dependencies
